@@ -1,0 +1,5 @@
+- Food photo analysis runs in a `requireSupabaseAuth` server function (`src/lib/food.functions.ts`) that calls the Gemini API through `src/lib/food-ai.ts`. The API key (`GEMINI_API_KEY`) stays server-side and the reply is validated and coerced with zod.
+- Meal and community images live in private storage buckets and are shown via signed URLs.
+- The database schema lives in `supabase/migrations`; keep `src/integrations/supabase/types.ts` in sync when it changes.
+- Google sign-in uses `supabase.auth.signInWithOAuth` (configured in the Supabase dashboard), not any hosting-specific broker.
+- Use `npm install` (the `.npmrc` sets `legacy-peer-deps`) or Bun; `bun.lock` is committed.
